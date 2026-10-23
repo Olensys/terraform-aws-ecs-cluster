@@ -1,6 +1,6 @@
-# __NAME__
+# terraform-aws-ecs-cluster
 
-__DESCRIPTION__
+ECS cluster on Fargate with Container Insights and capacity provider strategy
 
 ## Opinions
 
@@ -10,7 +10,7 @@ __DESCRIPTION__
 
 ```hcl
 module "this" {
-  source = "git::https://github.com/Olensys/__NAME__.git?ref=v1.0.0"
+  source = "git::https://github.com/Olensys/terraform-aws-ecs-cluster.git?ref=v1.0.0"
 
   name = "example"
   context = {
