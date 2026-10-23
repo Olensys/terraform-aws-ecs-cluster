@@ -33,6 +33,7 @@ run "test_create_false_plans_nothing" {
 run "test_container_insights_default_enhanced" {
   command = plan
 
+  # SMOKE: asserts only the variable default and the planned name; the applied Container Insights setting lives in the upstream child module and is proven by tests/complete.tftest.hcl.
   assert {
     condition     = var.container_insights == "enhanced"
     error_message = "container_insights must default to enhanced."
@@ -47,6 +48,7 @@ run "test_container_insights_default_enhanced" {
 run "test_fargate_providers_default" {
   command = plan
 
+  # SMOKE: asserts only the variable defaults; the applied capacity provider strategy lives in the upstream child module and is proven by tests/complete.tftest.hcl.
   assert {
     condition     = toset(keys(var.capacity_providers)) == toset(["FARGATE", "FARGATE_SPOT"])
     error_message = "FARGATE and FARGATE_SPOT must be configured by default."
@@ -97,5 +99,31 @@ run "test_no_namespace_by_default" {
   assert {
     condition     = length(aws_service_discovery_http_namespace.this) == 0
     error_message = "No namespace may be planned unless requested."
+  }
+}
+
+run "test_tags_contract" {
+  command = plan
+
+  variables {
+    tags = { Owner = "x" }
+    context = {
+      organization = "olensys"
+      environment  = "test"
+      application  = "example"
+      owner        = "platform"
+      cost_center  = "eng"
+      extra_tags   = { Owner = "y", Team = "z" }
+    }
+  }
+
+  assert {
+    condition     = output.tags.Owner == "x"
+    error_message = "var.tags must win over context.extra_tags."
+  }
+
+  assert {
+    condition     = output.tags.Team == "z"
+    error_message = "context.extra_tags must be merged."
   }
 }

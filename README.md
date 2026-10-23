@@ -13,17 +13,17 @@ ECS cluster on Fargate with Container Insights and capacity provider strategy
 ## Usage
 
 ```hcl
-module "this" {
-  source = "git::https://github.com/Olensys/terraform-aws-ecs-cluster.git?ref=v1.0.0"
+module "naming" {
+  source  = "git::https://github.com/Olensys/terraform-null-naming.git?ref=v1.0.1"
+  context = var.context
+}
 
-  name = "example"
-  context = {
-    organization = "olensys"
-    environment  = "dev"
-    application  = "example"
-    owner        = "platform"
-    cost_center  = "eng"
-  }
+module "ecs_cluster" {
+  source  = "git::https://github.com/Olensys/terraform-aws-ecs-cluster.git?ref=v1.0.2"
+  name    = module.naming.name
+  context = var.context
+
+  tags = module.naming.tags
 }
 ```
 
