@@ -4,7 +4,7 @@ tier: capability          # primitive | capability | blueprint
 maturity: experimental    # experimental | stable | deprecated
 description: ECS cluster on Fargate with Container Insights and capacity provider strategy
 owners: [platform]
-upstream: null            # e.g. "terraform-aws-modules/s3-bucket/aws 5.17.0"
-pairs_with: null          # e.g. "terraform-google-gcs-bucket"
+upstream: "terraform-aws-modules/ecs/aws//modules/cluster 7.6.1"
+pairs_with: terraform-google-gke-cluster
 registry_name: terraform-aws-ecs-cluster
 deprecated: null          # { removal: YYYY-MM-DD, replacement: <repo> }
