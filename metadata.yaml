@@ -1,7 +1,7 @@
 name: terraform-aws-ecs-cluster
 cloud: aws          # aws | google | common
 tier: capability          # primitive | capability | blueprint
-maturity: experimental    # experimental | stable | deprecated
+maturity: stable    # experimental | stable | deprecated
 description: ECS cluster on Fargate with Container Insights and capacity provider strategy
 owners: [platform]
 upstream: "terraform-aws-modules/ecs/aws//modules/cluster 7.6.1"
