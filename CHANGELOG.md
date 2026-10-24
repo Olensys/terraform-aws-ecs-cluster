@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/Olensys/terraform-aws-ecs-cluster/compare/v1.0.2...v1.0.3) (2026-10-24)
+
+
+### Bug Fixes
+
+* **examples:** pin naming module to v1.0.1 ([e2675bb](https://github.com/Olensys/terraform-aws-ecs-cluster/commit/e2675bbaba087bc08a27075de767e48f2c126e7d))
+* run integration on change and weekly instead of nightly ([dc160da](https://github.com/Olensys/terraform-aws-ecs-cluster/commit/dc160da954a39561a995c9c079ed145e10e7af74))
+
 ## 1.0.2
 
 ### Tests
