@@ -33,7 +33,7 @@ run "test_create_false_plans_nothing" {
 run "test_container_insights_default_enhanced" {
   command = plan
 
-  # SMOKE: asserts only the variable default and the planned name; the applied Container Insights setting lives in the upstream child module and is proven by tests/complete.tftest.hcl.
+  # SMOKE: asserts only the variable default and the planned name; the applied Container Insights setting lives in the upstream child module and is only truly checked by a real apply (the nightly tests/complete.tftest.hcl applies the example but asserts nothing about this setting; trivy enforces it statically where applicable).
   assert {
     condition     = var.container_insights == "enhanced"
     error_message = "container_insights must default to enhanced."
@@ -48,7 +48,7 @@ run "test_container_insights_default_enhanced" {
 run "test_fargate_providers_default" {
   command = plan
 
-  # SMOKE: asserts only the variable defaults; the applied capacity provider strategy lives in the upstream child module and is proven by tests/complete.tftest.hcl.
+  # SMOKE: asserts only the variable defaults; the applied capacity provider strategy lives in the upstream child module and is only truly checked by a real apply (the nightly tests/complete.tftest.hcl applies the example but asserts nothing about this setting; trivy enforces it statically where applicable).
   assert {
     condition     = toset(keys(var.capacity_providers)) == toset(["FARGATE", "FARGATE_SPOT"])
     error_message = "FARGATE and FARGATE_SPOT must be configured by default."
