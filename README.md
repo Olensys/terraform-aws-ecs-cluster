@@ -6,6 +6,7 @@ ECS cluster on Fargate with Container Insights and capacity provider strategy
 
 - Container Insights is `enhanced` by default; set `container_insights` to `enabled` or `disabled` to change it.
 - Capacity providers default to `FARGATE` (weight 1) and `FARGATE_SPOT` (weight 0), used as the cluster's default strategy.
+- Execute-command logging stays at the ECS default (no cluster-level override, no log group); ECS Exec sessions work without extra setup.
 - No EC2 capacity providers, security group, task execution role or execute-command log group are created.
 - An HTTP Service Connect namespace is created only when `service_connect_namespace` is set, and becomes the cluster default.
 - Tags are `context.extra_tags` merged with `tags`, with `tags` applied last.
