@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/Olensys/terraform-aws-ecs-cluster/compare/v1.0.4...v1.0.5) (2026-10-29)
+
+
+### Bug Fixes
+
+* leave execute-command logging at the ECS default ([#5](https://github.com/Olensys/terraform-aws-ecs-cluster/issues/5)) ([874811a](https://github.com/Olensys/terraform-aws-ecs-cluster/commit/874811a6d11f921da8426f98d9f257f3b94c0b26))
+
 ## [1.0.4](https://github.com/Olensys/terraform-aws-ecs-cluster/compare/v1.0.3...v1.0.4) (2026-10-24)
 
 
