@@ -60,6 +60,16 @@ run "test_fargate_providers_default" {
   }
 }
 
+run "test_exec_logging_not_overridden" {
+  # SMOKE: the configuration goes to the child module's cluster and is not visible here; this proves the module plans with it.
+  command = plan
+
+  assert {
+    condition     = output.name == "example"
+    error_message = "The cluster must plan cleanly with execute-command logging left at the default."
+  }
+}
+
 run "test_invalid_insights_rejected" {
   command = plan
 

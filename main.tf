@@ -38,7 +38,14 @@ module "this" {
   } : null
 
   # No execute-command logging is configured, so an unused log group is not created.
+  # Without an explicit configuration the upstream default sets logging to OVERRIDE
+  # with a log group named "placeholder", which does not exist.
   create_cloudwatch_log_group = false
+  configuration = {
+    execute_command_configuration = {
+      logging = "DEFAULT"
+    }
+  }
 
   tags = local.tags
 }
